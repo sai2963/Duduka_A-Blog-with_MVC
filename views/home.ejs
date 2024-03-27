@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Homepage</title>
+    <!-- Include Tailwind CSS -->
+    <link rel="icon" type="image/png" href="/images/download.png">
+    <link rel="stylesheet" href="output.css">
+</head>
+<body class="bg-gray-100">
+  <%- include('header.ejs' ); %>
+    <!-- Navigation Bar -->
+    <nav class="bg-gray-800 text-white p-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="#" class="text-xl font-bold">My Blog</a>
+            
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="bg-gray-900 py-20 text-white">
+        <div class="container mx-auto text-center">
+            <h1 class="text-4xl font-bold mb-4">Welcome to My Blog</h1>
+            <p class="text-lg">Discover the latest articles, tips, and insights on various topics.</p>
+            <a href="admin" class="mt-8 inline-block bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">Get Started</a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container mx-auto py-12">
+        <h2 class="text-2xl font-bold mb-4">Latest Articles</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+            <% data.forEach(blogdata => { %>
+                <div class="bg-white rounded-lg shadow-md">
+                    <!-- Use a fixed path for the images -->
+                    <% console.log(blogdata.image); %>
+                    <img src="<%= blogdata.image %>" height="400px" width="400px" class="w-full h-64 object-cover">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-2"><%= blogdata.title %></h3>
+                        
+                        <p class="text-gray-700"><%= blogdata.content %></p>
+                        
+                        <b >By <%= blogdata.username %></b>
+                        <a href="/home/blog/<%= blogdata._id %>" class="block mt-4 text-blue-500 hover:text-blue-600 font-bold">Read More</a>
+                       
+                    </div>
+                </div>
+                <% }); %>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto text-center">
+            <p>&copy; 2024 My Blog. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Page</title>
+    <!-- Include Tailwind CSS -->
+    <link rel="icon" type="image/png" href="/images/download.png">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+    
+    <header class="bg-gray-800 text-white py-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="#" class="text-xl font-bold">My Blog</a>
+            <nav>
+                <a href="/home" class="mr-4">Home</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container mx-auto py-8">
+        <!-- Blog Post -->
+        
+        <div class="max-w-4xl mx-auto bg-white rounded-lg overflow-hidden shadow-md">
+            <% console.log(detail.image) %>
+            <!-- Check if detail.image exists before rendering the image -->
+            <% if (detail.image) { %>
+                <img src="/<%= detail.image %>" height="400px" width="400px" class="w-full h-64 object-cover">
+            <% } else { %>
+                <!-- If detail.image does not exist, display a placeholder image or handle it as per your requirement -->
+                <img src="/images/placeholder-image.jpg" alt="Placeholder Image" class="w-full h-64 object-cover"/>
+            <% } %>
+            <div class="p-6">
+                <h2 class="text-3xl font-bold mb-4"><%= detail.title %></h2>
+                <div class="flex items-center mb-4">
+                    <span class="text-gray-700"><%= detail.username %></span>
+                </div>
+                <p class="text-gray-800 leading-relaxed mb-4"><%= detail.content %></p>
+                
+            </div>
+        </div>
+        
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto text-center">
+            <p>&copy; 2024 My Blog. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
