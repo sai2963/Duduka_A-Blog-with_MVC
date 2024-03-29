@@ -1,14 +1,14 @@
 const express = require("express");
 const router = express.Router();
 const xss = require("xss");
-const bcrypt = require("bcryptjs");
+
 
 
 const Blogcontroller = require("../controllers/blog-controllers");
 
 const bodyParser = require("body-parser");
 const multer = require("multer");
-const blogControllers = require("../controllers/blog-controllers");
+
 const storageConfig = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, "images");
@@ -27,25 +27,25 @@ router.use((req, res, next) => {
   next();
 });
 
-router.get("/home", blogControllers.getHome);
+router.get("/home", Blogcontroller.getHome);
 
-router.get("/signup", blogControllers.getSignup);
+router.get("/signup", Blogcontroller.getSignup);
 
-router.get("/login", blogControllers.getLogin);
+router.get("/login", Blogcontroller.getLogin);
 
-router.get("/admin", blogControllers.getadmin);
-router.get("/404", blogControllers.get404);
+router.get("/admin", Blogcontroller.getadmin);
+router.get("/404", Blogcontroller.get404);
 
-router.get("/home/blog/:id", blogControllers.getblog);
+router.get("/home/blog/:id", Blogcontroller.getblog);
 
 router.get("/401");
 
-router.post("/signup", blogControllers.postSignup);
+router.post("/signup", Blogcontroller.postSignup);
 
-router.post("/login", blogControllers.postLogin);
+router.post("/login", Blogcontroller.postLogin);
 
-router.post("/logout");
+router.post("/logout" ,Blogcontroller.postLogout);
 
-router.post("/submit", upload.single("image"), blogControllers.postSubmit);
+router.post("/submit", upload.single("image"), Blogcontroller.postSubmit);
 
 module.exports = router;

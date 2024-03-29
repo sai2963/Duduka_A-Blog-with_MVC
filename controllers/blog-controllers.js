@@ -1,5 +1,7 @@
 const { ObjectId } = require("mongodb");
 const Blog = require("../model/blog");
+const bcrypt = require("bcryptjs");
+const db = require("../data/database");
 async function getHome(req, res)  {
     try {
       const data = await Blog.fetchAll();
