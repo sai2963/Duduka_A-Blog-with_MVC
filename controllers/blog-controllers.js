@@ -150,13 +150,7 @@ async function getHome(req, res)  {
     const blog=new Blog(username,blogtitle,blogImagefile,blogcontent);
     await blog.save();
   
-    // const Blogdata = {
-    //   username: username,
-    //   title: blogtitle,
-    //   image: blogImagefile.path,
-    //   content: blogcontent,
-    // };
-    // await db.getDb().collection("blogdata").insertOne(Blogdata);
+     db.getDb().collection("blogdata").insertOne(Blogdata);
     res.redirect("home");
   };
   
